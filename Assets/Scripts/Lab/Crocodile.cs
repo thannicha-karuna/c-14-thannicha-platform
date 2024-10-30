@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crocodile : Enemies
+public class Crocodile : Enemies, IShootable
 {
-    [SerializeField]private float attactRange;
-    public Player player;
+    [SerializeField] private float attactRange;
+    [SerializeField] public Player player;
 
-    [SerializeField] private GameObject bullet;
-    [SerializeField] private Transform bulletSpawnPoint;
+    [field: SerializeField]public GameObject Bullet { get; set; }
+    [field: SerializeField]public Transform BulletSpawnPoint { get; set; }
 
-    [SerializeField] private float bulletSpawnTime;
-    [SerializeField] private float bulletTimer;
+    [field: SerializeField] public float BulletSpawnTime { get; set; }
+    [field: SerializeField] public float BulletTimer { get; set; }
 
     private void Update()
     {
-        bulletTimer -= Time.deltaTime;
+        BulletTimer -= Time.deltaTime;
         Behavior();
     }
     public override void Behavior()
@@ -32,13 +32,13 @@ public class Crocodile : Enemies
         }
     }
 
-    private void Shoot()
+    public void Shoot()
     {
-        if (bulletTimer <= 0)
+        if (BulletTimer <= 0)
         {
-            Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
+            Instantiate(Bullet, BulletSpawnPoint.position, Quaternion.identity);
 
-            bulletTimer = bulletSpawnTime;
+            BulletTimer = BulletSpawnTime;
         }
         
     }
