@@ -12,7 +12,7 @@ public class Player : Character, IShootable
 
     void OnHitWith(Enemies enemies)
     {
-        
+        TakeDamage(enemies.DamageHit);
     }
     private void Update()
     {
