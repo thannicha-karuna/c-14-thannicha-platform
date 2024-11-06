@@ -4,21 +4,39 @@ using UnityEngine;
 
 public class Banana : Weapons
 {
-    [SerializeField] private float speed;
+    [SerializeField] float speed;
 
     private void Start()
     {
+        Damage = 10;
+        speed = 4.0f * GetShootDirection();
+       
         Move();
-        Debug.Log("Banana damage" + Damage + "Banana speed" + speed);
+       // Debug.Log("Banana damage" + Damage + "Banana speed" + speed);
+
     }
 
     public override void Move()
     {
-        Debug.Log("Banana is moving with constant speed by using transform");
+        //Debug.Log("Banana is moving with constant speed by using transform");
+        //s = speed * time(Physic)
+        float newX = transform.position.x + speed * Time.fixedDeltaTime;
+        float newY = transform.position.y;
+        Vector2 newposition = new Vector2(newX, newY); 
+        transform.position = newposition;
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
     }
 
     public override void OnhitWith(Character character)
     {
-        //do nothing...
+        //do nothing...do something shoot
+        if(character is Enemies)
+        {
+            character.TakeDamage(this.Damage);
+        }
     }
 }

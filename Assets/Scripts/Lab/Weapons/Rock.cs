@@ -5,17 +5,18 @@ using UnityEngine;
 public class Rock : Weapons
 {
     [SerializeField] Rigidbody2D rb2d;
-    Vector2 force;
+    [SerializeField] Vector2 force;
 
     private void Start()
     {
-        Move();
+        
         //Debug.Log("Rock damage" + Damage);
         Damage = 10;
 
         rb2d = GetComponent<Rigidbody2D>();
         //thorwing rock
-        force = new Vector2(GetShootDirection()*10  , 99);
+        force = new Vector2(GetShootDirection() *150  ,100);
+        Move();
     }
 
     public override void Move()

@@ -38,9 +38,9 @@ public abstract class Weapons : MonoBehaviour
         if (shootDir < 0)
         {
 
-            return -1;//L
+            return 1;//L
         }
-        else return 1;//R
+        else return -1;//R
 
     }
     private void OnTriggerEnter2D(Collider2D other)

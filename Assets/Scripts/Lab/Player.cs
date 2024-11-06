@@ -10,6 +10,10 @@ public class Player : Character, IShootable
     [field: SerializeField] public float BulletSpawnTime { get; set; }
     [field: SerializeField] public float BulletTimer { get; set; }
 
+    void OnHitWith(Enemies enemies)
+    {
+        
+    }
     private void Update()
     {
         BulletTimer -= Time.deltaTime;
@@ -21,11 +25,21 @@ public class Player : Character, IShootable
     public void Shoot()
     {
 
-        if (BulletTimer <= 0)
+        if (Input.GetButtonDown("Fire1") && BulletTimer <= 0)
         {
-            Instantiate(Bullet, BulletSpawnPoint.position, Quaternion.identity);
+           GameObject obj = Instantiate(Bullet, BulletSpawnPoint.position, Quaternion.identity);
+           Banana banana = obj.GetComponent<Banana>();
+            banana.Init(10, this);
+            //BulletTimer = BulletSpawnTime;
+        }
+    }
 
-            BulletTimer = BulletSpawnTime;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+      Enemies enemies =  collision.gameObject.GetComponent<Enemies>();
+        if (enemies != null)
+        {
+            
         }
     }
 }

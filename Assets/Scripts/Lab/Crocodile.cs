@@ -18,9 +18,23 @@ public class Crocodile : Enemies, IShootable
         BulletTimer -= Time.deltaTime;
         Behavior();
     }
+
+    public void Start()
+    {
+        
+        BulletTimer = 0.5f;
+        DamageHit = 30;
+        BulletSpawnTime = 5.0f;
+        attactRange = 6f;
+        player = GameObject.FindObjectOfType<Player>();
+
+    }
     public override void Behavior()
     {
         //polysomething
+        //Initz
+
+        
 
         Vector3 direction = player.transform.position - transform.position;
 
