@@ -10,6 +10,7 @@ public class Player : Character, IShootable
     [field: SerializeField] public float BulletSpawnTime { get; set; }
     [field: SerializeField] public float BulletTimer { get; set; }
 
+
     void OnHitWith(Enemies enemies)
     {
         TakeDamage(enemies.DamageHit);
@@ -39,7 +40,7 @@ public class Player : Character, IShootable
       Enemies enemies =  collision.gameObject.GetComponent<Enemies>();
         if (enemies != null)
         {
-            
+            OnHitWith(enemies);
         }
     }
 }

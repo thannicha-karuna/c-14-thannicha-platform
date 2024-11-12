@@ -31,11 +31,20 @@ public abstract class Weapons : MonoBehaviour
         shooter = _owner;
             
      }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        OnhitWith(other.GetComponent<Character>()); //this is polymolisim
+
+        //Destroy something object
+        Destroy(this.gameObject, 4f);
+
+    }
     public int GetShootDirection()
     {
 
-        float shootDir = shooter.BulletSpawnPoint.transform.position.x - shooter.BulletSpawnPoint.parent.transform.position.x;
-        if (shootDir < 0)
+        float shootDir = shooter.BulletSpawnPoint.position.x - shooter.BulletSpawnPoint.parent.position.x;
+        if (shootDir > 0)
         {
 
             return 1;//L
@@ -43,12 +52,5 @@ public abstract class Weapons : MonoBehaviour
         else return -1;//R
 
     }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        OnhitWith(other.GetComponent<Character>()); //this is polymolisim
-
-        //Destroy something object
-        Destroy(this.gameObject, 4f);
-        
-    }
+    
 }

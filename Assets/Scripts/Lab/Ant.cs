@@ -10,6 +10,7 @@ public class Ant : Enemies
     private void Start()
     {
         //Ant a = new Ant(10);
+        //DamageHit = 10;
     }
     /* public Ant(int newHealth)
      {

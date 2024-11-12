@@ -15,7 +15,7 @@ public class Rock : Weapons
 
         rb2d = GetComponent<Rigidbody2D>();
         //thorwing rock
-        force = new Vector2(GetShootDirection() *150  ,100);
+        force = new Vector2(GetShootDirection() *200  ,150);
         Move();
     }
 

@@ -8,11 +8,12 @@ public class Banana : Weapons
 
     private void Start()
     {
+
         Damage = 10;
         speed = 4.0f * GetShootDirection();
        
         Move();
-       // Debug.Log("Banana damage" + Damage + "Banana speed" + speed);
+       //Debug.Log($"{GetShootDirection()}" + Damage + "Banana speed" + speed);
 
     }
 

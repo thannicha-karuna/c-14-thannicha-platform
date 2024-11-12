@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Enemies : Character
 {
     //if u make get set, make private something so send variable
-    private int damageHit;
+    private int damageHit = 10;
     public int DamageHit
     {
         get
